@@ -1,51 +1,33 @@
-import { ContadorRed } from "./components/ContadorRed";
-import { Counter } from "./components/Counter";
-import { Formulario } from "./components/Formulario";
-import { Formulario2 } from "./components/Formulario2";
-import { TimerPadre } from "./components/TimerPadre";
-import { Usuario } from "./components/Usuario";
+import { useState } from 'react';
+import { BotonCambiarData } from './components/BotonCambiarData';
 
+import { Pagina1 } from './components/Pagina1';
+import { Pagina2 } from './components/Pagina2';
+import { DataProvider } from './Context.tsx/DataContext';
+
+const dataFixed = {
+  nombre: 'Yesmeily',
+  edad: 17
+}
 
 function App() {
-  return (
-    <>
-      <h1>React + TypeScript</h1>
-      <hr/>
 
-      <h2>useState</h2>
-<Counter />
+  const [data, setData] = useState(dataFixed)
 
-<Usuario/>
+return(
+<DataProvider>
+<div className="container">
+      
+<Pagina1 data={ data } />
+<Pagina2 data={ data }/>
+<BotonCambiarData setData={ setData }/>
 
+    </div>
+    </DataProvider>
 
-<h2>useEffect - useRef</h2>
-<hr/>
-
-<TimerPadre/>
-
-<h2>useReducer</h2>
-<hr/>
-<ContadorRed/>
-
-<h2>customHooks</h2>
-<hr/>
-<Formulario/>
-<br/>
-
-<Formulario2/>
-
-
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-
-    </>
   );
-}
+
+  }
+
 
 export default App;
